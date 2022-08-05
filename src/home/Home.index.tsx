@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useCallback, useEffect } from 'react';
 import {View, Text, Image, TouchableHighlight, TouchableOpacity, ScrollView} from 'react-native';
 import { basic } from '../app/constants/LevelOneTopics';
-console.log("theme", theme);
+
 
 export default function Home(props) {
   console.log("Props", props);
