@@ -8,19 +8,29 @@ import DriverEncoder from '../driver-encoder/DriverEncoder.index';
 import BusIO from '../bus-io/BusIO.index';
 import Controller from '../controller/Controller.index';
 import Battery from '../battery/Battery.index';
+import Sketch from '../sketch/Sketch.index';
 
 const Stack = createNativeStackNavigator();
 
 export default function RouteStack() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{
+        headerStyle: {
+          backgroundColor: '#000030',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
         <Stack.Screen name={ROUTES.HOME} component={Home} options={{headerShown: false}} />
         <Stack.Screen name={ROUTES.MOTOR} component={Motor}/>
         <Stack.Screen name={ROUTES.DRIVER_ENCODER} component={DriverEncoder}/>
         <Stack.Screen name={ROUTES.BUS_IO} component={BusIO}/>
         <Stack.Screen name={ROUTES.CONTROLLER} component={Controller}/>
         <Stack.Screen name={ROUTES.BATTERY} component={Battery}/>
+        <Stack.Screen name={ROUTES.SKETCH} component={Sketch}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
