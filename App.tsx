@@ -1,5 +1,7 @@
+import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { View, Text, StatusBar, Platform } from 'react-native';
+import { View, StatusBar, Platform } from 'react-native';
+import { AppNavigation } from './src/app/Route.index';
 
 const statusbarHeight = Platform.select({ios: 47, android: StatusBar.currentHeight});
 
@@ -13,7 +15,7 @@ export default class App extends Component {
       <View style={{height: statusbarHeight, backgroundColor:'#CCC'}}>
         <StatusBar/>
       </View>
-      <Text>MyKernel</Text>
+      <AppNavigation/>
     </View>;    
   }
 }
