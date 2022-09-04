@@ -12,9 +12,6 @@ export default class App extends Component {
 
   render(): React.ReactNode {
     return <View style={{flex:1}}>
-      <View style={{height: statusbarHeight, backgroundColor:'#222'}}>
-        <StatusBar barStyle={'light-content'}/>
-      </View>
       <AppNavigation/>
     </View>;    
   }

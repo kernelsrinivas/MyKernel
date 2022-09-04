@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
+import { timeoutCallback } from "../app/helpers/timeHelper";
 import { OtpWidget } from "./components/OTPWidget";
 import { PinWidget } from "./components/PinWidget";
 import { SignupWidget } from "./components/SignupWidget";
@@ -28,12 +29,18 @@ export default class Login extends Component<Props, State> {
         }
     }
 
+    componentDidMount(): void {
+        timeoutCallback(()=> {
+            this.setState({currentScreen: SCREENS.SIGNUP});
+        }, 3000);
+    }
+
     renderScreens = (screen: string): JSX.Element | null => {
         const renderMap = {
             [SCREENS.SPLASH]: () => <SplashView/>,
-            [SCREENS.SIGNUP]: () => <SignupWidget/>,
-            [SCREENS.OTP]: () => <OtpWidget/>,
-            [SCREENS.PIN]: () => <PinWidget/>
+            [SCREENS.SIGNUP]: () => <SignupWidget next={()=> this.setState({currentScreen: SCREENS.OTP})}/>,
+            [SCREENS.OTP]: () => <OtpWidget next={()=> this.setState({currentScreen: SCREENS.OTP})}/>,
+            [SCREENS.PIN]: () => <PinWidget next={()=> this.setState({currentScreen: SCREENS.OTP})}/>
         }
         return renderMap[screen] ? renderMap[screen]() : null;
     }
